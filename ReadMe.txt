@@ -1,8 +1,9 @@
 >>>>>>>>>>>>>>>>>Configuration>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-Before starting FaultTracer, the user would need to provide a
-configuration file, faulttracer-config.xml, stored in the base
-directory of each program version under test:
+Import the FaultTracer project into Eclipse to compile it. Before
+starting FaultTracer, the user would need to provide a configuration
+file, faulttracer-config.xml, stored in the base directory of each
+program version under test:
 
 <project name="FaultTracer-Configuration">
   <property name="subject" value="..."/>
@@ -16,7 +17,8 @@ directory of each program version under test:
 </project>
 
 To illustrate, see the fault-config.xml and fault-config-junit3.xml
-under the examples/bank-account1.0 directory.
+for a small example project under the examples/bank-account1.0
+directory.
 
 In the config file:
 1. "subject" shows the name of the version under test;
@@ -71,3 +73,8 @@ read the following source code files:
 1. tracer.coverage.io.StatementTraceLoader
 
 2. tracer.coverage.io.StatementTraceLoader
+
+>>>>>>>>>>>>>>>>>More Info>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+If you are intested in how each Ant task are implemented, please read
+"resources/faulttracer.xml"
