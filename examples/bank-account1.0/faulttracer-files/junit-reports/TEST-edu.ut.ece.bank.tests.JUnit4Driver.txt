@@ -1,0 +1,6 @@
+Testsuite: edu.ut.ece.bank.tests.JUnit4Driver
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.068 sec
+
+Testcase: check1 took 0.007 sec
+Testcase: check2 took 0 sec
+Testcase: check5 took 0 sec

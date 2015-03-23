@@ -1,0 +1,10 @@
+<project name="FaultTracer-specific">
+	<property name="subject" value="bank-account1.0"/>
+	<property name="prefix" value="edu.ut.ece.bank"/>
+	<property name="testsuite" value="edu.ut.ece.bank.tests.TestDriver"/>
+	<property name="junit4" value="false"/>
+	<property name="faulttracer" value="/Users/zhanglingming/Documents/workspace/FaultTracer"/>
+	<property name="cp" value="./bin;./lib/*;"/>
+	<property name="faulttracer.maxmemory" value="1048m"/>
+  <import file="${faulttracer}\resources\faulttracer.xml"/>
+</project>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="1" failures="0" hostname="Zhangs-MacBook-Pro.local" name="${faulttracer.fake.testsuite}" skipped="0" tests="1" time="0.0" timestamp="2015-03-22T21:45:26">
+  <properties>
+    <property name="java.vendor" value="Oracle Corporation" />
+    <property name="faulttracer.jars.dir" value="/Users/zhanglingming/Documents/workspace/FaultTracer/lib/" />
+    <property name="sun.java.launcher" value="SUN_STANDARD" />
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
+    <property name="create.coverage.project.test.suite" value="-Dfaulttracer.test.suite=edu.ut.ece.bank.tests.JUnit4Driver" />
+    <property name="faulttracer.output.dir" value="/Users/zhanglingming/Documents/runtime-EclipseApplication/bank-account1.0/faulttracer-files" />
+    <property name="os.name" value="Mac OS X" />
+    <property name="project.mutation.path" value="${mutationpath}" />
+    <property name="sun.boot.class.path" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/classes" />
+    <property name="create.coverage.trace" value="-Dfaulttracer.trace=true" />
+    <property name="create.coverage.package.prefix" value="-Dfaulttracer.package.prefix=edu.ut.ece.bank" />
+    <property name="java.vm.specification.vendor" value="Oracle Corporation" />
+    <property name="ant.home" value="/Users/zhanglingming/Software/apache-ant-1.9.4/" />
+    <property name="java.runtime.version" value="1.7.0_51-b13" />
+    <property name="faulttracer.location" value="/Users/zhanglingming/Documents/workspace/FaultTracer" />
+    <property name="faulttracer.test.suite" value="edu.ut.ece.bank.tests.JUnit4Driver" />
+    <property name="subject" value="bank-account1.0" />
+    <property name="faulttracer.junit.level" value="true" />
+    <property name="faulttracer" value="/Users/zhanglingming/Documents/workspace/FaultTracer" />
+    <property name="user.name" value="zhanglingming" />
+    <property name="project.prefix" value="edu.ut.ece.bank" />
+    <property name="user.language" value="en" />
+    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib" />
+    <property name="faulttracer.javaagent" value="/Users/zhanglingming/Documents/workspace/FaultTracer/agent.jar" />
+    <property name="ant.project.name" value="FaultTracer-specific" />
+    <property name="java.version" value="1.7.0_51" />
+    <property name="user.timezone" value="" />
+    <property name="sun.arch.data.model" value="64" />
+    <property name="faulttracer.properties.add" value=" " />
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
+    <property name="java.endorsed.dirs" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/endorsed" />
+    <property name="sun.cpu.isalist" value="" />
+    <property name="sun.jnu.encoding" value="UTF-8" />
+    <property name="file.encoding.pkg" value="sun.io" />
+    <property name="classes.add" value="" />
+    <property name="cp" value="/Users/zhanglingming/Documents/runtime-EclipseApplication/bank-account1.0/bin;/Users/zhanglingming/Documents/runtime-EclipseApplication/bank-account1.0\lib\*;" />
+    <property name="create.coverage.javaagent" value="-javaagent:/Users/zhanglingming/Documents/workspace/FaultTracer/agent.jar" />
+    <property name="file.separator" value="/" />
+    <property name="java.specification.name" value="Java Platform API Specification" />
+    <property name="java.class.version" value="51.0" />
+    <property name="user.country" value="US" />
+    <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre" />
+    <property name="java.vm.info" value="mixed mode" />
+    <property name="newversion" value="/Users/zhanglingming/Documents/runtime-EclipseApplication/bank-account2.0" />
+    <property name="ant.file" value="/Users/zhanglingming/Documents/runtime-EclipseApplication/bank-account1.0/faulttracer-config.xml" />
+    <property name="os.version" value="10.9.4" />
+    <property name="faulttracer.trace" value="true" />
+    <property name="path.separator" value=":" />
+    <property name="java.vm.version" value="24.51-b03" />
+    <property name="ant.library.dir" value="/Users/zhanglingming/Software/apache-ant-1.9.4//lib" />
+    <property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob" />
+    <property name="sun.io.unicode.encoding" value="UnicodeBig" />
+    <property name="create.coverage.type" value="-Dfaulttracer.method.coverage=true" />
+    <property name="ant.file.FaultTracer-specific" value="/Users/zhanglingming/Documents/runtime-EclipseApplication/bank-account1.0/faulttracer-config.xml" />
+    <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit" />
+    <property name="project.test.suite" value="edu.ut.ece.bank.tests.JUnit4Driver" />
+    <property name="faulttracer.maxmemory" value="1048m" />
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
+    <property name="user.home" value="/Users/zhanglingming" />
+    <property name="java.specification.vendor" value="Oracle Corporation" />
+    <property name="create.coverage.junit" value="-Dfaulttracer.junit.level=true" />
+    <property name="java.library.path" value="/Users/zhanglingming/Research/tools/jpf-absinth/lib:/Users/zhanglingming/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:." />
+    <property name="java.vendor.url" value="http://java.oracle.com/" />
+    <property name="java.vm.vendor" value="Oracle Corporation" />
+    <property name="gopherProxySet" value="false" />
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner ${faulttracer.fake.testsuite} skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/zhanglingming/Documents/runtime-EclipseApplication/bank-account1.0/faulttracer-files/junit-reports/TEST-${faulttracer.fake.testsuite}.xml formatter=org.apache.tools.ant.taskdefs.optional.junit.PlainJUnitResultFormatter,/Users/zhanglingming/Documents/runtime-EclipseApplication/bank-account1.0/faulttracer-files/junit-reports/TEST-${faulttracer.fake.testsuite}.txt crashfile=/Users/zhanglingming/Documents/runtime-EclipseApplication/bank-account1.0/junitvmwatcher7459502128957671027.properties propsfile=/Users/zhanglingming/Documents/runtime-EclipseApplication/bank-account1.0/junit236182086635113994.properties" />
+    <property name="java.class.path" value="/Users/zhanglingming/Documents/workspace/FaultTracer/bin:/Users/zhanglingming/Documents/workspace/FaultTracer/lib/FaultTracer.jar:/Users/zhanglingming/Documents/workspace/FaultTracer/lib/asm-3.0.jar:/Users/zhanglingming/Documents/workspace/FaultTracer/lib/asm-all-3.1.jar:/Users/zhanglingming/Documents/workspace/FaultTracer/lib/asm-commons-3.1.jar:/Users/zhanglingming/Documents/workspace/FaultTracer/lib/asm-tree-3.1.jar:/Users/zhanglingming/Documents/workspace/FaultTracer/lib/asm-util-3.1.jar:/Users/zhanglingming/Documents/workspace/FaultTracer/lib/commons-lang-2.3.jar:/Users/zhanglingming/Documents/workspace/FaultTracer/lib/junit.jar:/Users/zhanglingming/Documents/workspace/FaultTracer/lib/log4j-1.2.14.jar:/Users/zhanglingming/Documents/runtime-EclipseApplication/bank-account1.0/bin:/Users/zhanglingming/Documents/runtime-EclipseApplication/bank-account1.0:/Users/zhanglingming/Research/tools/daikon-bin/daikon.jar:/Users/zhanglingming/Research/tools/mujava/mujava-v3.jar:/Users/zhanglingming/Research/tools/mujava/openjava2005.jar:/Users/zhanglingming/Research/tools/daikon-bin/java:/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/lib/tools.jar:/Users/zhanglingming/Software/apache-ant-1.9.4/lib/ant-launcher.jar:/Users/zhanglingming/Software/apache-ant-1.9.4/lib/ant.jar:/Users/zhanglingming/Software/apache-ant-1.9.4/lib/ant-junit.jar:/Users/zhanglingming/Software/apache-ant-1.9.4/lib/ant-junit4.jar:/Users/zhanglingming/Documents/workspace/FaultTracer/agent.jar" />
+    <property name="ant.version" value="Apache Ant(TM) version 1.9.4 compiled on April 29 2014" />
+    <property name="faulttracer.dist.dir" value="/Users/zhanglingming/Documents/workspace/FaultTracer" />
+    <property name="ant.file.type.FaultTracer-specific" value="file" />
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="ant.file.type" value="file" />
+    <property name="java.vm.specification.version" value="1.7" />
+    <property name="sun.cpu.endian" value="little" />
+    <property name="sun.os.patch.level" value="unknown" />
+    <property name="java.io.tmpdir" value="/var/folders/p6/75sscz5x6j775b1kl82z6bp40000gn/T/" />
+    <property name="faulttracer.arg.line" value=" -javaagent:/Users/zhanglingming/Documents/workspace/FaultTracer/agent.jar -Xmx1048m -Dfaulttracer.package.prefix=edu.ut.ece.bank -Dfaulttracer.test.suite=edu.ut.ece.bank.tests.JUnit4Driver -Dfaulttracer.trace=true -Dfaulttracer.method.coverage=true -Dfaulttracer.junit.level=true" />
+    <property name="prefix" value="edu.ut.ece.bank" />
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/" />
+    <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment" />
+    <property name="os.arch" value="x86_64" />
+    <property name="faulttracer.fake.suite" value="tracer.coverage.junit.JUnit4FaultTracerTestSuite" />
+    <property name="testsuite" value="edu.ut.ece.bank.tests.JUnit4Driver" />
+    <property name="java.ext.dirs" value="/Users/zhanglingming/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java" />
+    <property name="user.dir" value="/Users/zhanglingming/Documents/runtime-EclipseApplication/bank-account1.0" />
+    <property name="faulttracer.method.coverage" value="true" />
+    <property name="line.separator" value="&#xa;" />
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM" />
+    <property name="ant.file.FaultTracer-general" value="/Users/zhanglingming/Documents/workspace/FaultTracer/resources/faulttracer.xml" />
+    <property name="ant.file.type.FaultTracer-general" value="file" />
+    <property name="basedir" value="/Users/zhanglingming/Documents/runtime-EclipseApplication/bank-account1.0" />
+    <property name="create.coverage.memory" value="-Xmx1048m" />
+    <property name="methods.add" value="" />
+    <property name="ant.java.version" value="1.7" />
+    <property name="ant.core.lib" value="/Users/zhanglingming/Software/apache-ant-1.9.4/lib/ant.jar" />
+    <property name="file.encoding" value="UTF-8" />
+    <property name="project.new.version" value="/Users/zhanglingming/Documents/runtime-EclipseApplication/bank-account2.0" />
+    <property name="faulttracer.package.prefix" value="edu.ut.ece.bank" />
+    <property name="junit4" value="true" />
+    <property name="java.specification.version" value="1.7" />
+    <property name="ant.project.invoked-targets" value="test-faulttracer" />
+  </properties>
+  <error message="${faulttracer.fake.testsuite}" type="java.lang.ClassNotFoundException">java.lang.ClassNotFoundException: ${faulttracer.fake.testsuite}
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:366)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:355)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:354)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:190)
+</error>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

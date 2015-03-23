@@ -1,0 +1,26 @@
+Testsuite: edu.ut.ece.bank.tests.TestDriver
+Tests run: 5, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.071 sec
+------------- Standard Output ---------------
+>>>>>>>>>run faulttracer
+[Failed Test] edu.ut.ece.bank.tests.BankTests.test1
+[Passed Test] edu.ut.ece.bank.tests.BankTests.test2
+[Passed Test] edu.ut.ece.bank.tests.BankTests.test3
+[Passed Test] edu.ut.ece.bank.tests.BankTests.test4
+[Passed Test] edu.ut.ece.bank.tests.BankTests.test5
+************************************************************
+------------- ---------------- ---------------
+
+Testcase: test1 took 0.005 sec
+	FAILED
+null
+junit.framework.AssertionFailedError: null
+	at edu.ut.ece.bank.tests.BankTests.test1(BankTests.java:14)
+	at tracer.coverage.junit.JUnitTestDriver.runWithOutTimeout(JUnitTestDriver.java:168)
+	at tracer.coverage.junit.JUnitTestDriver.runInstrumentedTests(JUnitTestDriver.java:150)
+	at tracer.coverage.junit.JUnitTestDriver.run(JUnitTestDriver.java:125)
+	at tracer.coverage.junit.FaultTracerTestSuite.run(FaultTracerTestSuite.java:48)
+
+Testcase: test2 took 0 sec
+Testcase: test3 took 0.001 sec
+Testcase: test4 took 0.001 sec
+Testcase: test5 took 0 sec
