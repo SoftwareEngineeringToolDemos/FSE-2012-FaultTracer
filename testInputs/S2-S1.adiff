@@ -1,0 +1,12 @@
+DF:D.f:I=>DM:D.get:()I, 
+CFI:B.f2:I=>
+AM:C.C:()V=>
+CM:B.get:()I=>
+CFI:B.f3:I=>
+CSFI:A.f2:I=>
+CSFI:A.f1:I=>
+AF:C.f:I=>
+AM:C.get:()I=>AF:C.f:I, 
+DM:D.get:()I=>
+DF:B.f4:I=>CM:B.get:()I, 
+DM:D.D:()V=>

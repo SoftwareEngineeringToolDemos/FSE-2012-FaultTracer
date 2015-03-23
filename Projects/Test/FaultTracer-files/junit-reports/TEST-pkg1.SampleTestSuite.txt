@@ -1,0 +1,15 @@
+Testsuite: pkg1.SampleTestSuite
+Tests run: 3, Failures: 1, Errors: 0, Time elapsed: 0.18 sec
+
+Testcase: test1 took 0.016 sec
+Testcase: test3 took 0.006 sec
+	FAILED
+expected:<3> but was:<4>
+junit.framework.AssertionFailedError: expected:<3> but was:<4>
+	at pkg1.Tests.test3(Tests.java:15)
+	at tracer.coverage.junit.JUnitTestDriver.runWithOutTimeout(JUnitTestDriver.java:74)
+	at tracer.coverage.junit.JUnitTestDriver.runNormalTests(JUnitTestDriver.java:62)
+	at tracer.coverage.junit.JUnitTestDriver.run(JUnitTestDriver.java:42)
+	at tracer.coverage.junit.FaultTracerTestSuite.run(FaultTracerTestSuite.java:40)
+
+Testcase: test2 took 0.011 sec

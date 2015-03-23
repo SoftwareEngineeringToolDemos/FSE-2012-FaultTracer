@@ -1,0 +1,13 @@
+<TEST>ATest.test1:()V
+ATest.test1:()V-A.m1:(I)V
+A.<clinit>:()V
+<FW>A.<clinit>:()V-A.f1:I
+<FW>A.<clinit>:()V-A.f2:I
+A.m1:(I)V
+<FW>A.m1:(I)V-A.f1:I
+<TESTPASS>
+<TEST>ATest.test2:()V
+ATest.test2:()V-A.m2:()I
+A.m2:()I
+<FR>A.m2:()I-A.f2:I
+<TESTPASS>

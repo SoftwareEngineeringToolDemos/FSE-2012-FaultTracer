@@ -1,0 +1,6 @@
+Testsuite: pkg1.Tests
+Tests run: 3, Failures: 0, Errors: 0, Time elapsed: 0.109 sec
+
+Testcase: test1 took 0.016 sec
+Testcase: test2 took 0.031 sec
+Testcase: test3 took 0 sec

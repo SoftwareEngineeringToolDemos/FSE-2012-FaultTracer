@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="false"
+            id="FaultTracer.objectContribution1"
+            objectClass="org.eclipse.jdt.core.IJavaProject">
+         <action
+               class="tracer.ui.DifferencingPopupAction"
+               icon="icons/change.gif"
+               id="FaultTracer.action1"
+               label="Launch FIFL"
+               menubarPath="FaultTracer">
+         </action>
+      </objectContribution>
+      <objectContribution
+            adaptable="false"
+            id="FaultTracer.objectContribution2"
+            objectClass="org.eclipse.jdt.core.IJavaElement">
+      </objectContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            category="FaultTracer.category1"
+            class="tracer.callgraph.ui.CallGraphView"
+            icon="icons/cg.gif"
+            id="FaultTracer.view1"
+            name="Extended-Call-Graph View"
+            restorable="true">
+      </view>
+      <category
+            id="FaultTracer.category1"
+            name="FaultTracer">
+      </category>
+      <view
+            category="FaultTracer.category1"
+            class="tracer.differencing.ui.ChangeDependencyView"
+            icon="icons/change.gif"
+            id="FaultTracer.view2"
+            name="Atomic-Change View"
+            restorable="true">
+      </view>
+      <view
+            category="FaultTracer.category1"
+            class="tracer.faultlocalization.ui.TestEditMapping"
+            icon="icons/loc.gif"
+            id="FaultTracer.view4"
+            name="Testing-Debugging View"
+            restorable="true">
+      </view>
+   </extension>
+
+</plugin>
