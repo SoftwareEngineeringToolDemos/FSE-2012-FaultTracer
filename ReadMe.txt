@@ -1,14 +1,21 @@
+>>>>>>>>>>>>>>>>>Installation>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Import the FaultTracer project into Eclipse to compile it. You need to
+install:
+1. Eclipse GEF Zest Visualization Toolkit 1.3.0 and above (http://www.eclipse.org/gef/updates/index.php)
+2. Ant 1.7.0 and above (http://ant.apache.org/)
+
 >>>>>>>>>>>>>>>>>Configuration>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-Import the FaultTracer project into Eclipse to compile it. Before
-starting FaultTracer, the user would need to provide a configuration
-file, faulttracer-config.xml, stored in the base directory of each
-program version under test:
+Before starting FaultTracer, the user would need to provide a
+configuration file, faulttracer-config.xml, stored in the base
+directory of each program version under test:
 
 <project name="FaultTracer-Configuration">
   <property name="subject" value="..."/>
   <property name="prefix" value="..."/>
   <property name="testsuite" value="..."/>
+  <property name="junit4" value="..."/>
   <property name="newversion" value="..."/>
   <property name="faulttracer" value="..."/>
   <property name="cp" value="..."/>
@@ -24,15 +31,20 @@ In the config file:
 1. "subject" shows the name of the version under test;
 2. "prefix" shows the common package name shared by the project;
 3. "testsuite" shows the fully qualified name for the test suite class;
-4. "newversion" shows the absolute path of the newer version compared
+4. "junit4" shows whether the test suite is under JUnit4.0+ (for JUnit3
+put the value to be "false")
+5. "newversion" shows the absolute path of the newer version compared
 with the current version (do not use it if you are not using the test
 selection functionality);
-5. "faulttracer" provides the absolute path of the FaultTracer project;
-6. "cp" provides the class path needed for executing the program under
+6. "faulttracer" provides the absolute path of the FaultTracer project;
+7. "cp" provides the class path needed for executing the program under
 test;
-7. Finally, "maxmemory" provides the maximum memory allowed for executing
+8. Finally, "maxmemory" provides the maximum memory allowed for executing
 FaultTracer (for the concern of performance, we suggest a value of
 greater than or equal to "1024m").
+
+Note that if you are using Windows, please check the path format into
+Windows-based format.
 
 >>>>>>>>>>>>>>>>>Collect Coverage>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
