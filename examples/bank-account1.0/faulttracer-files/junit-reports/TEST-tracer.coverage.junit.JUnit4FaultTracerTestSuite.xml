@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="cometnet-10-21-13-37.utdallas.edu" name="tracer.coverage.junit.JUnit4FaultTracerTestSuite" skipped="0" tests="0" time="0.133" timestamp="2015-03-27T21:32:15">
+  <properties>
+    <property name="java.vendor" value="Oracle Corporation" />
+    <property name="faulttracer.jars.dir" value="/Users/sycheng/Documents/git/faulttracer/lib/" />
+    <property name="sun.java.launcher" value="SUN_STANDARD" />
+    <property name="eclipse.pdebuild.templates" value="/Users/sycheng/Public/eclipse/plugins/org.eclipse.pde.build_3.9.0.v20140415-2029/templates//" />
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
+    <property name="create.coverage.project.test.suite" value="-Dfaulttracer.test.suite=edu.ut.ece.bank.tests.JUnit4Driver" />
+    <property name="faulttracer.output.dir" value="/Users/sycheng/Documents/git/faulttracer/examples/bank-account1.0/faulttracer-files" />
+    <property name="os.name" value="Mac OS X" />
+    <property name="project.mutation.path" value="${mutationpath}" />
+    <property name="sun.boot.class.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/classes" />
+    <property name="create.coverage.trace" value="-Dfaulttracer.trace=true" />
+    <property name="create.coverage.package.prefix" value="-Dfaulttracer.package.prefix=edu.ut.ece.bank" />
+    <property name="java.vm.specification.vendor" value="Oracle Corporation" />
+    <property name="ant.home" value="/Users/sycheng/Public/eclipse/plugins/org.apache.ant_1.9.2.v201404171502" />
+    <property name="java.runtime.version" value="1.8.0_31-b13" />
+    <property name="faulttracer.location" value="/Users/sycheng/Documents/git/faulttracer" />
+    <property name="faulttracer.test.suite" value="edu.ut.ece.bank.tests.JUnit4Driver" />
+    <property name="subject" value="bank-account1.0" />
+    <property name="faulttracer.junit.level" value="true" />
+    <property name="faulttracer" value="/Users/sycheng/Documents/git/faulttracer" />
+    <property name="user.name" value="sycheng" />
+    <property name="faulttracer.fake.testsuite" value="tracer.coverage.junit.JUnit4FaultTracerTestSuite" />
+    <property name="project.prefix" value="edu.ut.ece.bank" />
+    <property name="user.language" value="en" />
+    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib" />
+    <property name="faulttracer.javaagent" value="/Users/sycheng/Documents/git/faulttracer/agent.jar" />
+    <property name="ant.project.name" value="FaultTracer-specific" />
+    <property name="java.version" value="1.8.0_31" />
+    <property name="user.timezone" value="America/Chicago" />
+    <property name="sun.arch.data.model" value="64" />
+    <property name="faulttracer.properties.add" value=" " />
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
+    <property name="java.endorsed.dirs" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/endorsed" />
+    <property name="sun.cpu.isalist" value="" />
+    <property name="sun.jnu.encoding" value="UTF-8" />
+    <property name="file.encoding.pkg" value="sun.io" />
+    <property name="classes.add" value="" />
+    <property name="cp" value="./bin;./lib/*;" />
+    <property name="create.coverage.javaagent" value="-javaagent:/Users/sycheng/Documents/git/faulttracer/agent.jar" />
+    <property name="file.separator" value="/" />
+    <property name="java.specification.name" value="Java Platform API Specification" />
+    <property name="java.class.version" value="52.0" />
+    <property name="user.country" value="US" />
+    <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre" />
+    <property name="java.vm.info" value="mixed mode" />
+    <property name="ant.file" value="/Users/sycheng/Documents/git/faulttracer/examples/bank-account1.0/faulttracer-config.xml" />
+    <property name="os.version" value="10.10.2" />
+    <property name="faulttracer.trace" value="true" />
+    <property name="path.separator" value=":" />
+    <property name="java.vm.version" value="25.31-b07" />
+    <property name="ant.library.dir" value="/Users/sycheng/Public/eclipse/plugins/org.apache.ant_1.9.2.v201404171502/lib" />
+    <property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob" />
+    <property name="sun.io.unicode.encoding" value="UnicodeBig" />
+    <property name="create.coverage.type" value="-Dfaulttracer.statement.coverage=true" />
+    <property name="ant.file.FaultTracer-specific" value="/Users/sycheng/Documents/git/faulttracer/examples/bank-account1.0/faulttracer-config.xml" />
+    <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit" />
+    <property name="project.test.suite" value="edu.ut.ece.bank.tests.JUnit4Driver" />
+    <property name="faulttracer.maxmemory" value="1048m" />
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
+    <property name="eclipse.pdebuild.scripts" value="/Users/sycheng/Public/eclipse/plugins/org.eclipse.pde.build_3.9.0.v20140415-2029/scripts//" />
+    <property name="user.home" value="/Users/sycheng" />
+    <property name="create.coverage.junit" value="-Dfaulttracer.junit.level=true" />
+    <property name="java.specification.vendor" value="Oracle Corporation" />
+    <property name="java.library.path" value="/Users/sycheng/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:." />
+    <property name="java.vendor.url" value="http://java.oracle.com/" />
+    <property name="java.vm.vendor" value="Oracle Corporation" />
+    <property name="gopherProxySet" value="false" />
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
+    <property name="java.class.path" value="/Users/sycheng/Documents/git/faulttracer/bin:/Users/sycheng/Documents/git/faulttracer/lib/FaultTracer.jar:/Users/sycheng/Documents/git/faulttracer/lib/asm-3.0.jar:/Users/sycheng/Documents/git/faulttracer/lib/asm-all-3.1.jar:/Users/sycheng/Documents/git/faulttracer/lib/asm-commons-3.1.jar:/Users/sycheng/Documents/git/faulttracer/lib/asm-tree-3.1.jar:/Users/sycheng/Documents/git/faulttracer/lib/asm-util-3.1.jar:/Users/sycheng/Documents/git/faulttracer/lib/commons-lang-2.3.jar:/Users/sycheng/Documents/git/faulttracer/lib/junit-4.8.1.jar:/Users/sycheng/Documents/git/faulttracer/lib/junit.jar:/Users/sycheng/Documents/git/faulttracer/lib/log4j-1.2.14.jar:/Users/sycheng/Documents/git/faulttracer/examples/bank-account1.0/bin:/Users/sycheng/Documents/git/faulttracer/examples/bank-account1.0/lib/junit-3.8.1.jar:/Users/sycheng/Documents/git/faulttracer/examples/bank-account1.0/lib/junit.jar:/Users/sycheng/Public/eclipse/plugins/org.apache.ant_1.9.2.v201404171502/lib/ant-launcher.jar:/Users/sycheng/Public/eclipse/plugins/org.apache.ant_1.9.2.v201404171502/lib/ant.jar:/Users/sycheng/Public/eclipse/plugins/org.apache.ant_1.9.2.v201404171502/lib/ant-junit.jar:/Users/sycheng/Public/eclipse/plugins/org.apache.ant_1.9.2.v201404171502/lib/ant-junit4.jar:/Users/sycheng/Documents/git/faulttracer/agent.jar" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner tracer.coverage.junit.JUnit4FaultTracerTestSuite filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/sycheng/Documents/git/faulttracer/examples/bank-account1.0/faulttracer-files/junit-reports/TEST-tracer.coverage.junit.JUnit4FaultTracerTestSuite.xml formatter=org.apache.tools.ant.taskdefs.optional.junit.PlainJUnitResultFormatter,/Users/sycheng/Documents/git/faulttracer/examples/bank-account1.0/faulttracer-files/junit-reports/TEST-tracer.coverage.junit.JUnit4FaultTracerTestSuite.txt crashfile=/Users/sycheng/Documents/git/faulttracer/examples/bank-account1.0/junitvmwatcher6884871525923031488.properties propsfile=/Users/sycheng/Documents/git/faulttracer/examples/bank-account1.0/junit2071777673107799325.properties" />
+    <property name="ant.version" value="Apache Ant(TM) version 1.9.2 compiled on July 8 2013" />
+    <property name="ant.file.type.FaultTracer-specific" value="file" />
+    <property name="faulttracer.dist.dir" value="/Users/sycheng/Documents/git/faulttracer" />
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="java.vm.specification.version" value="1.8" />
+    <property name="sun.os.patch.level" value="unknown" />
+    <property name="sun.cpu.endian" value="little" />
+    <property name="java.io.tmpdir" value="/var/folders/qq/y0wzz6sd3y5_8d8nsv9xv5480000gn/T/" />
+    <property name="eclipse.pdebuild.home" value="/Users/sycheng/Public/eclipse/plugins/org.eclipse.pde.build_3.9.0.v20140415-2029/.//" />
+    <property name="faulttracer.arg.line" value=" -javaagent:/Users/sycheng/Documents/git/faulttracer/agent.jar -Xmx1048m -Dfaulttracer.package.prefix=edu.ut.ece.bank -Dfaulttracer.test.suite=edu.ut.ece.bank.tests.JUnit4Driver -Dfaulttracer.trace=true -Dfaulttracer.statement.coverage=true -Dfaulttracer.junit.level=true" />
+    <property name="prefix" value="edu.ut.ece.bank" />
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/" />
+    <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment" />
+    <property name="os.arch" value="x86_64" />
+    <property name="testsuite" value="edu.ut.ece.bank.tests.JUnit4Driver" />
+    <property name="java.ext.dirs" value="/Users/sycheng/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java" />
+    <property name="user.dir" value="/Users/sycheng/Documents/git/faulttracer/examples/bank-account1.0" />
+    <property name="line.separator" value="&#xa;" />
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM" />
+    <property name="ant.file.FaultTracer-general" value="/Users/sycheng/Documents/git/faulttracer/resources/faulttracer.xml" />
+    <property name="ant.file.type.FaultTracer-general" value="file" />
+    <property name="basedir" value="/Users/sycheng/Documents/git/faulttracer/examples/bank-account1.0" />
+    <property name="create.coverage.memory" value="-Xmx1048m" />
+    <property name="methods.add" value="" />
+    <property name="ant.java.version" value="1.8" />
+    <property name="ant.core.lib" value="/Users/sycheng/Public/eclipse/plugins/org.apache.ant_1.9.2.v201404171502/lib/ant.jar" />
+    <property name="faulttracer.statement.coverage" value="true" />
+    <property name="file.encoding" value="UTF-8" />
+    <property name="project.new.version" value="${newversion}" />
+    <property name="faulttracer.package.prefix" value="edu.ut.ece.bank" />
+    <property name="junit4" value="true" />
+    <property name="java.specification.version" value="1.8" />
+    <property name="ant.project.invoked-targets" value="test-faulttracer" />
+  </properties>
+  <system-out><![CDATA[>>edu.ut.ece.bank.tests.JUnit4Driver
+[Failed Test] edu.ut.ece.bank.tests.JUnit4Tests.check1
+[Passed Test] edu.ut.ece.bank.tests.JUnit4Tests.check2
+[Passed Test] edu.ut.ece.bank.tests.JUnit4Tests.check5
+************************************************************
+FaultTracer tests run: 3, Failures: 1, Errors: 0
+************************************************************
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
