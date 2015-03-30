@@ -82,11 +82,11 @@ to load your statement coverage.
 If you want to further access the coverage data through APIs, please
 read the following source code files:
 
-1. tracer.coverage.io.StatementTraceLoader
+1. tracer.coverage.io.MethodTraceLoader
 
 2. tracer.coverage.io.StatementTraceLoader
 
 >>>>>>>>>>>>>>>>>More Info>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-If you are intested in how each Ant task are implemented, please read
+If you are intested in how each Ant task is implemented, please read
 "resources/faulttracer.xml"
