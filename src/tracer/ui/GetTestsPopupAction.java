@@ -1,5 +1,6 @@
 package tracer.ui;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.jdt.core.ICompilationUnit;
@@ -17,9 +18,11 @@ import org.eclipse.ui.IWorkbenchPart;
 
 public class GetTestsPopupAction implements IObjectActionDelegate {
 	private ISelection selection;
+	private List<IType> allTypes;
 
 	@Override
 	public void run(IAction action) {
+		allTypes = new ArrayList<IType>();
 		if (!(this.selection instanceof IStructuredSelection)) {
 			System.out.println("select projects in order to get field scopes!");
 			return;
@@ -42,6 +45,7 @@ public class GetTestsPopupAction implements IObjectActionDelegate {
 				e.printStackTrace();
 			}
 		}
+		serialize();
 	}
 
 	@Override
@@ -81,9 +85,50 @@ public class GetTestsPopupAction implements IObjectActionDelegate {
 		IType[] types = unit.getAllTypes();
 		for (IType type : types) {
 			if (!type.getFullyQualifiedName().contains("$"))
-				System.out.println("result.addTestSuite("
-						+ type.getFullyQualifiedName() + ".class);");
+				this.allTypes.add(type);
 		}
+
+	}
+
+	public void serialize() {
+		System.out
+				.println(">>>>>>>>>>>>>>>>>>>>>>list of test classes:>>>>>>>>>>>>>>>>>>>>>>\n");
+		for (IType type : allTypes) {
+				System.out.println(type.getFullyQualifiedName());
+		}
+		StringBuilder sb = new StringBuilder();
+
+		sb.append(">>>>>>>>>>>>>>>>>>>>>>JUnit3 format test suite:>>>>>>>>>>>>>>>>>>>>>>\n");
+		sb.append("import junit.framework.Test;\n");
+		sb.append("import junit.framework.TestCase;\n");
+		sb.append("import junit.framework.TestSuite;\n");
+
+		sb.append("public class AllTests extends TestCase {\n");
+
+		sb.append("	public static Test suite() {\n");
+
+		sb.append("		TestSuite result = new TestSuite(\"All Tests\");\n");
+		for (IType type : allTypes) {
+				sb.append("result.addTestSuite(" + type.getFullyQualifiedName()
+						+ ".class);\n");
+		}
+		sb.append("return result;\n");
+		sb.append("}\n");
+		sb.append("}\n");
+		sb.append("\n");
+		sb.append(">>>>>>>>>>>>>>>>>>>>>>JUnit4 format test suite:>>>>>>>>>>>>>>>>>>>>>>\n");
+
+		sb.append("import org.junit.runner.RunWith;\n");
+		sb.append("import org.junit.runners.Suite;\n");
+
+		sb.append("@RunWith(Suite.class)\n");
+		sb.append("@Suite.SuiteClasses({");
+		for (IType type : allTypes) {
+				sb.append(type.getFullyQualifiedName() + ".class, ");
+		}
+		sb.append("})\n");
+		sb.append("public class AllTests {}\n");
+		System.out.println(sb);
 	}
 
 }

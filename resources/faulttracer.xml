@@ -68,7 +68,7 @@
 		</antcall>
 	</target>
 
-	<target name="collectMethodCoverage" description="* create ECG coverage data for the program version under test" depends="faulttracerDir">
+	<target name="collectMethodCoverage" description="* create method coverage data for the program version under test" depends="faulttracerDir">
 		<property name="create.coverage.javaagent" value="-javaagent:${faulttracer.javaagent}" />
 		<property name="create.coverage.memory" value="-Xmx${faulttracer.maxmemory}" />
 		<property name="create.coverage.package.prefix" value="-Dfaulttracer.package.prefix=${project.prefix}" />
@@ -81,13 +81,26 @@
 		</antcall>
 	</target>
 
-	<target name="collectStatementCoverage" description="* create ECG coverage data for the program version under test" depends="faulttracerDir">
+	<target name="collectStatementCoverage" description="* create statement coverage data for the program version under test" depends="faulttracerDir">
 		<property name="create.coverage.javaagent" value="-javaagent:${faulttracer.javaagent}" />
 		<property name="create.coverage.memory" value="-Xmx${faulttracer.maxmemory}" />
 		<property name="create.coverage.package.prefix" value="-Dfaulttracer.package.prefix=${project.prefix}" />
 		<property name="create.coverage.project.test.suite" value="-Dfaulttracer.test.suite=${project.test.suite}" />
 		<property name="create.coverage.trace" value="-Dfaulttracer.trace=true" />
 		<property name="create.coverage.type" value="-Dfaulttracer.statement.coverage=true" />
+		<property name="create.coverage.junit" value="-Dfaulttracer.junit.level=${junit4}" />
+		<antcall target="test-faulttracer">
+			<param name="faulttracer.arg.line" value=" ${create.coverage.javaagent} ${create.coverage.memory} ${create.coverage.package.prefix} ${create.coverage.project.test.suite} ${create.coverage.trace} ${create.coverage.type} ${create.coverage.junit}" />
+		</antcall>
+	</target>
+	
+	<target name="collectBranchCoverage" description="* create branch coverage data for the program version under test" depends="faulttracerDir">
+		<property name="create.coverage.javaagent" value="-javaagent:${faulttracer.javaagent}" />
+		<property name="create.coverage.memory" value="-Xmx${faulttracer.maxmemory}" />
+		<property name="create.coverage.package.prefix" value="-Dfaulttracer.package.prefix=${project.prefix}" />
+		<property name="create.coverage.project.test.suite" value="-Dfaulttracer.test.suite=${project.test.suite}" />
+		<property name="create.coverage.trace" value="-Dfaulttracer.trace=true" />
+		<property name="create.coverage.type" value="-Dfaulttracer.branch.coverage=true" />
 		<property name="create.coverage.junit" value="-Dfaulttracer.junit.level=${junit4}" />
 		<antcall target="test-faulttracer">
 			<param name="faulttracer.arg.line" value=" ${create.coverage.javaagent} ${create.coverage.memory} ${create.coverage.package.prefix} ${create.coverage.project.test.suite} ${create.coverage.trace} ${create.coverage.type} ${create.coverage.junit}" />
@@ -227,6 +240,15 @@
 		</target>
 	<target name="loadMethodCoverage" description="">
 			<java classname="tracer.coverage.io.MethodTraceLoader" maxmemory="${faulttracer.maxmemory}" fork="true">
+				<classpath>
+					<path refid="faulttracer.classpath" />
+					<pathelement path="${cp}">
+					</pathelement>
+				</classpath>
+			</java>
+		</target>
+	<target name="loadBranchCoverage" description="">
+			<java classname="tracer.coverage.io.BranchTraceLoader" maxmemory="${faulttracer.maxmemory}" fork="true">
 				<classpath>
 					<path refid="faulttracer.classpath" />
 					<pathelement path="${cp}">

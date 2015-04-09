@@ -55,6 +55,31 @@ public class Tracer {
 			methodMap.put(key, methodMap.get(key) + 1);
 	}
 
+	public void logBranchInfo(String branch, String id) {
+		if (tracingDeacivated.get()) {
+			logger.debug("Excluding entitiy: " + id + "<" + branch + ">");
+			return;
+		}
+		logger.debug("Recording entitiy: " + id + "<" + branch + ">");
+
+		String key = id;
+		if (branch.length() > 0) {
+			key = key + "<" + branch + ">";
+		}
+		ConcurrentMap<String, Integer> methodMap = ECGCoverageListener.methodCoverageMap
+				.get();
+		if (branch.equals("true")) {
+			String resetKey = id + "<false>";
+			methodMap.put(resetKey, methodMap.get(resetKey)-1);
+			if(methodMap.get(resetKey)==0)
+				methodMap.remove(resetKey);
+		}
+		if (!methodMap.containsKey(key)) {
+			methodMap.put(key, 1);
+		} else
+			methodMap.put(key, methodMap.get(key) + 1);
+	}
+
 	public void logCallRelationInfo(String caller, String callee) {
 
 		if (tracingDeacivated.get()) {

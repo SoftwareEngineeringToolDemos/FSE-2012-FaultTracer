@@ -19,6 +19,12 @@
             adaptable="false"
             id="FaultTracer.objectContribution2"
             objectClass="org.eclipse.jdt.core.IJavaElement">
+         <action
+               class="tracer.ui.GetTestsPopupAction"
+               id="FaultTracer.action1"
+               label="GetAllTests"
+               menubarPath="FaultTracer">
+         </action>
       </objectContribution>
    </extension>
    <extension

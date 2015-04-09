@@ -19,6 +19,7 @@ public class Properties {
 	public static final String RUN_REDUCED_KEY = "faulttracer.reduce";
 	public static final String METHOD_COV_KEY = "faulttracer.method.coverage";
 	public static final String STATEMENT_COV_KEY = "faulttracer.statement.coverage";
+	public static final String BRANCH_COV_KEY = "faulttracer.branch.coverage";
 
 	public static final String JUNIT_LEVEL_KEY = "faulttracer.junit.level";
 
@@ -36,6 +37,9 @@ public class Properties {
 			false);
 	public static boolean STATEMENT_COV = getPropertyOrDefault(
 			STATEMENT_COV_KEY, false);
+	
+	public static boolean BRANCH_COV = getPropertyOrDefault(
+			BRANCH_COV_KEY, false);
 
 	public static boolean JUNIT4 = getPropertyOrDefault(JUNIT_LEVEL_KEY, false);
 
@@ -51,7 +55,12 @@ public class Properties {
 		else if (Properties.STATEMENT_COV)
 			TRACER_ECG_FILES = FaultTracerProperties.TRACER_DIR
 					+ File.separator + "statement-coverage";
+		else if (Properties.BRANCH_COV)
+			TRACER_ECG_FILES = FaultTracerProperties.TRACER_DIR
+					+ File.separator + "branch-coverage";
 	}
+	public static String TRACER_BRAN_FILES = FaultTracerProperties.TRACER_DIR
+			+ File.separator + "branch-coverage";
 	public static String TRACER_STAT_FILES = FaultTracerProperties.TRACER_DIR
 			+ File.separator + "statement-coverage";
 	public static String TRACER_METH_FILES = FaultTracerProperties.TRACER_DIR
