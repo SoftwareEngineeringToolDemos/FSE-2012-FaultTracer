@@ -29,22 +29,44 @@ directory.
 
 In the config file:
 1. "subject" shows the name of the version under test;
+
 2. "prefix" shows the common package name shared by the project;
-3. "testsuite" shows the fully qualified name for the test suite class;
+
+3. "testsuite" shows the fully qualified name for the test suite
+class; For project without a main suite, you can simply create a
+AllTests.java test suite for the whole project. To facilitate you
+creating that test suite file, I now implemented a pop up menu in
+FaultTracer. You can run FaultTracer as Eclipse plugin (right-click
+FaultTracer and select "Run As -> Eclipse Application"). Then, in the
+new workspace started by FaultTracer, you can import the project that
+you want to collect coverage. Right-click the test package root (e.g.,
+src/test/java), and select "GetAllTests". Then, the FaultTracer
+console will print the automatically constructed test suite in both
+JUnit 3 and JUnit4 formats. You can simply copy the one you want for
+your project, and create a class file for it. Note that some tests
+included in the test suite may not be tests. You need to manually
+exclude them -- you can run that test suite from Eclipse first to
+exclude all the non-test classes from the test suite. 
+
 4. "junit4" shows whether the test suite is under JUnit4.0+ (for JUnit3
 put the value to be "false")
+
 5. "newversion" shows the absolute path of the newer version compared
 with the current version (do not use it if you are not using the test
 selection functionality);
+
 6. "faulttracer" provides the absolute path of the FaultTracer project;
+
 7. "cp" provides the class path needed for executing the program under
-test;
+test; Note that to get the library classpath for project using maven
+to build, please use the following command: "mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:build-classpath| awk '/Dependencies classpath:/{getline; print}'". It will output all the library info. You need to put all the library info separated by
+":" (linux OS) or ";" (Windows OS), together with the binary class file
+directory for your source code and test code.
+
 8. Finally, "maxmemory" provides the maximum memory allowed for executing
 FaultTracer (for the concern of performance, we suggest a value of
 greater than or equal to "1024m").
 
-Note that if you are using Windows, please check the path format into
-Windows-based format.
 
 >>>>>>>>>>>>>>>>>Collect Coverage>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -62,9 +84,9 @@ $ ant -f faulttracer-config-junit3.xml collectMethodCoverage
 to collect method coverage for the JUnit3 test suite: edit.ut.ece.bank.tests.TestDriver
 
 Note that by replacing "collectMethodCoverage" with
-"collectStatementCoverage", you can get statement coverage. All the
-coverage results are stored in the "faulttracer-files" dir created
-under your project.
+"collectStatementCoverage" or "collectBranchCoverage", you can get
+statement or branch coverage. All the coverage results are stored in
+the "faulttracer-files" dir created under your project.
 
 >>>>>>>>>>>>>>>>>Load Coverage>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -77,14 +99,54 @@ to load your method coverage. Or
 
 $ ant -f faulttracer-config.xml loadStatementCoverage
 
-to load your statement coverage.
+to load your statement coverage. Or
+
+$ ant -f faulttracer-config.xml loadBranchCoverage
+
+to load your branch coverage.
+
+Note that after executing the load commands, you can find
+branch-coverage.dat/statement-coverage.dat/method-coverage.dat under
+your faulttracer-files directory. For example, in the
+statement-coverage.dat file, each line start with a test name, then
+followed by all the statements covered by it. They are all separated
+using space. To illustrate, consider the following line:
+
+edu.ut.ece.bank.tests.JUnit4Tests.check1-false edu.ut.ece.bank.Account.withdraw:(D)D:23-1 edu.ut.ece.bank.tests.JUnit4Tests.check1:()V:21-1 edu.ut.ece.bank.Account.withdraw:(D)D:25-1 edu.ut.ece.bank.Account.withdraw:(D)D:24-1 ...
+
+In that line, "edu.ut.ece.bank.tests.JUnit4Tests.check1-false" is the
+test name, and "false" means the test failed while "true" means the
+test passed. "edu.ut.ece.bank.Account.withdraw:(D)D:23-1" means the
+23th line in class "edu.ut.ece.bank.Account" (the line is also inside
+method "withdraw:(D)D") is executed for 1 times by the test.
+
+
+For another example, in the branch-coverage.dat file, each line follow
+the same pattern. However, the covered elements are different from
+statement coverage, since here we consider the true/false branch, or
+switch branch covered. To illustrate, consider the following line:
+
+edu.ut.ece.bank.tests.BankTests.test0-true edu.ut.ece.bank.tests.BankTests:73:15-1 edu.ut.ece.bank.Account:23:5<true>-1 ...
+
+In that line, "edu.ut.ece.bank.tests.BankTests.test0" is the test
+name, and "true" means the test
+passed. "edu.ut.ece.bank.Account:23:5<true>-1" means the true branch
+of the 5th branch statement (5 is the global branch ID) at line 23 of
+class "edu.ut.ece.bank.Account" is executed 1 time by the
+test. "edu.ut.ece.bank.tests.BankTests:73:15-1" means the 15th (15 is
+the global switch target ID) switch branch (or switch target) at line
+73 of class "edu.ut.ece.bank.tests.BankTests" is covered 1 time.  Note
+that for the branch coverage file, the class name and line number are
+just used to help understanding. You can simply use the branchID with
+<true> or <false> to identify each boolean branch, and the labelID to
+identify each switch branch/target, in order to speed up analysis.
 
 If you want to further access the coverage data through APIs, please
 read the following source code files:
 
 1. tracer.coverage.io.MethodTraceLoader
-
 2. tracer.coverage.io.StatementTraceLoader
+3. tracer.coverage.io.BranchTraceLoader
 
 >>>>>>>>>>>>>>>>>More Info>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
