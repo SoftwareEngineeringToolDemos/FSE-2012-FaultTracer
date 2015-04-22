@@ -150,7 +150,10 @@ public class JUnitTestDriver {
 			pass = true;
 			testStart(testName);
 			Test test = this.allTests.get(testName);
+			long start=System.currentTimeMillis();
 			runWithOutTimeout(test, result);
+			long end=System.currentTimeMillis();
+			long timecost=end-start;
 			pass = listener.getResult();
 			testEnd(testName);
 			if (listener.error)
@@ -160,9 +163,9 @@ public class JUnitTestDriver {
 			if (listener.pass)
 				passed++;
 			if (pass) {
-				System.out.println("[Passed Test] " + testName);
+				System.out.println("[Passed Test: "+timecost+"ms] " + testName);
 			} else
-				System.out.println("[Failed Test] " + testName);
+				System.out.println("[Failed Test: "+timecost+"ms] " + testName);
 			listener.reset();
 		}
 		System.out

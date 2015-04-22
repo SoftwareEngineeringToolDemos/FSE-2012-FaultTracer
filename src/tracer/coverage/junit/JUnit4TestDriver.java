@@ -115,7 +115,10 @@ public class JUnit4TestDriver {
 
 			testStart(testName);
 			Description test = this.allTests.get(testName);
+			long start=System.currentTimeMillis();
 			runWithOutTimeout(test, listener);
+			long end=System.currentTimeMillis();
+			long timecost=end-start;
 			pass = listener.getErrors().size() == 0
 					&& listener.getFailures().size() == 0;
 			testEnd(testName);
@@ -124,10 +127,10 @@ public class JUnit4TestDriver {
 			if (listener.getFailures().size() != 0)
 				failed++;
 			if (pass) {
-				System.out.println("[Passed Test] " + testName);
+				System.out.println("[Passed Test: "+timecost+"ms] " + testName);
 				passed++;
 			} else
-				System.out.println("[Failed Test] " + testName);
+				System.out.println("[Failed Test: "+timecost+"ms] " + testName);
 		}
 		System.out
 				.println("************************************************************");
