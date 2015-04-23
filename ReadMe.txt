@@ -2,7 +2,7 @@
 
 Import the FaultTracer project into Eclipse to compile it. You need to
 install:
-1. Eclipse GEF Zest Visualization Toolkit 1.3.0 and above (http://www.eclipse.org/gef/updates/index.php)
+1. Eclipse GEF SDK 3.7.2, including the Zest Visualization Toolkit (http://www.eclipse.org/gef/updates/index.php, recommended Update Site: http://download.eclipse.org/tools/gef/updates-pre-3_8/releases/)
 2. Ant 1.7.0 and above (http://ant.apache.org/)
 
 >>>>>>>>>>>>>>>>>Configuration>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
