@@ -107,6 +107,17 @@
 		</antcall>
 	</target>
 
+	
+	<target name="normalExecute" description="* Create ECG coverage data for program under test" depends="faulttracerDir">
+		<property name="create.coverage.memory" value="-Xmx${faulttracer.maxmemory}" />
+		<property name="create.coverage.package.prefix" value="-Dfaulttracer.package.prefix=${project.prefix}" />
+		<property name="create.coverage.project.test.suite" value="-Dfaulttracer.test.suite=${project.test.suite}" />
+		<property name="create.coverage.junit" value="-Dfaulttracer.junit.level=${junit4}" />
+		<antcall target="test-faulttracer">
+			<param name="faulttracer.arg.line" value="  ${create.coverage.memory} ${create.coverage.package.prefix} ${create.coverage.project.test.suite} ${create.coverage.junit}" />
+		</antcall>
+	</target>
+	
 	<target name="selectAffectedTests" description="* select affected tests for regression testing">
 		<property name="select.tests.memory" value="-Xmx${faulttracer.maxmemory}" />
 		<property name="select.tests.new.version" value="-Dfaulttracer.new.version=${project.new.version}" />
@@ -209,14 +220,6 @@
 		</echo>
 	</target>
 
-	<target name="normalExecute" description="* Create ECG coverage data for program under test" depends="faulttracerDir">
-		<property name="create.coverage.memory" value="-Xmx${faulttracer.maxmemory}" />
-		<property name="create.coverage.package.prefix" value="-Dfaulttracer.package.prefix=${project.prefix}" />
-		<property name="create.coverage.project.test.suite" value="-Dfaulttracer.test.suite=${project.test.suite}" />
-		<antcall target="test-faulttracer">
-			<param name="faulttracer.arg.line" value="  ${create.coverage.memory} ${create.coverage.package.prefix} ${create.coverage.project.test.suite}" />
-		</antcall>
-	</target>
 
 
 	<target name="loadECGCoverage" description="">
