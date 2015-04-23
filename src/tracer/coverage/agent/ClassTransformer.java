@@ -30,6 +30,8 @@ public class ClassTransformer implements ClassFileTransformer {
 			}
 
 			String classNameWithDots = className.replace('/', '.');
+			
+			// Do not transfer JUnit test suite anymore, now directly run the JUnit4FaultTracerTestSuite
 			if (false&&compareWithSuiteProperty(classNameWithDots)) {
 				logger.debug("transformer for test suite class: " + className);
 				byte[] result = classfileBuffer;

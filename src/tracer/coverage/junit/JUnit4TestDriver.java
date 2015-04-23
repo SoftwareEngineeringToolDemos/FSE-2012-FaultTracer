@@ -1,5 +1,8 @@
 package tracer.coverage.junit;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,8 +10,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import junit.framework.TestSuite;
 
 import org.apache.commons.lang.time.StopWatch;
 import org.apache.log4j.Logger;
@@ -64,7 +65,12 @@ public class JUnit4TestDriver {
 
 	public final void run() {
 		listeners.add(new ECGCoverageListener());
-		runInstrumentedTests();
+		try {
+			runInstrumentedTests();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public static Map<String, Description> getTests(Runner r) {
@@ -102,7 +108,8 @@ public class JUnit4TestDriver {
 		return new ArrayList<String>(allTests.keySet());
 	}
 
-	private void runInstrumentedTests() {
+	private void runInstrumentedTests() throws IOException {
+		BufferedWriter writer = new BufferedWriter(new FileWriter("time.log"));
 		logger.info("Running tests of project " + Properties.PROJECT_PREFIX);
 		// addMutationTestListener(new AdabuListener());
 		List<String> allTests = getAllTests();
@@ -115,10 +122,10 @@ public class JUnit4TestDriver {
 
 			testStart(testName);
 			Description test = this.allTests.get(testName);
-			long start=System.currentTimeMillis();
+			long start = System.currentTimeMillis();
 			runWithOutTimeout(test, listener);
-			long end=System.currentTimeMillis();
-			long timecost=end-start;
+			long end = System.currentTimeMillis();
+			long timecost = end - start;
 			pass = listener.getErrors().size() == 0
 					&& listener.getFailures().size() == 0;
 			testEnd(testName);
@@ -127,19 +134,29 @@ public class JUnit4TestDriver {
 			if (listener.getFailures().size() != 0)
 				failed++;
 			if (pass) {
-				System.out.println("[Passed Test: "+timecost+"ms] " + testName);
+				System.out.println("[Passed Test: " + timecost + "ms] "
+						+ testName);
+				writer.write("[Passed Test: " + timecost + "ms] " + testName
+						+ "\n");
+
 				passed++;
-			} else
-				System.out.println("[Failed Test: "+timecost+"ms] " + testName);
+			} else {
+				System.out.println("[Failed Test: " + timecost + "ms] "
+						+ testName);
+				writer.write("[Failed Test: " + timecost + "ms] " + testName
+						+ "\n");
+
+			}
 		}
 		System.out
 				.println("************************************************************");
-		System.out.println("FaultTracer tests run: " + (passed+failed) + ", Failures: "
-				+ failed + ", Errors: " + error);
+		System.out.println("FaultTracer tests run: " + (passed + failed)
+				+ ", Failures: " + failed + ", Errors: " + error);
 		System.out
 				.println("************************************************************");
 		testsEnd();
-
+		writer.flush();
+		writer.close();
 	}
 
 	protected long runWithOutTimeout(Description t, RunListener listener) {
