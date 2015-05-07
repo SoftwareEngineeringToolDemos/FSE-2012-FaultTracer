@@ -7,6 +7,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -153,10 +154,12 @@ public class JUnitTestDriver {
 		result.addListener(listener);
 		testsStart();
 		int passed = 0, failed = 0, error = 0;
-
-		// System.out.println("************************************************************");
+		int test_id = 1;
+		Map<Integer, String> test_mapping = new HashMap<Integer, String>();
+	// System.out.println("************************************************************");
 		for (String testName : allTests) {
 			pass = true;
+			test_mapping.put(test_id, testName);
 			testStart(testName);
 			Test test = this.allTests.get(testName);
 			long start = System.currentTimeMillis();
@@ -164,7 +167,8 @@ public class JUnitTestDriver {
 			long end = System.currentTimeMillis();
 			long timecost = end - start;
 			pass = listener.getResult();
-			testEnd(testName);
+			testEnd(testName, test_id);
+			test_id++;
 			if (listener.error)
 				error++;
 			if (listener.fail)
@@ -196,6 +200,7 @@ public class JUnitTestDriver {
 		testsEnd();
 		writer.flush();
 		writer.close();
+		JUnit4TestDriver.serializeTestId(test_mapping);
 	}
 
 	protected long runWithOutTimeout(Test t, TestResult result) {
@@ -214,9 +219,9 @@ public class JUnitTestDriver {
 	 * @param testName
 	 *            the test that starts
 	 */
-	private void testEnd(String testName) {
+	private void testEnd(String testName, int test_id) {
 		for (Listener listener : listeners) {
-			listener.testEnd(testName);
+			listener.testEnd(testName, test_id);
 		}
 	}
 

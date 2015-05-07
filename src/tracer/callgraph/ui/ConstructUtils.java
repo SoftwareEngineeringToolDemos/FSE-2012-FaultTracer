@@ -1,5 +1,6 @@
 package tracer.callgraph.ui;
 
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
@@ -11,7 +12,7 @@ public class ConstructUtils {
 
 	public static Set<String> call_relation = new HashSet<String>();
 
-	public static void initialize(String test, boolean before) {
+	public static void initialize(String test, boolean before) throws IOException {
 		call_relation.clear();
 		Map<String, Map<String, Integer>> trace = null;
 		if (before)

@@ -1,6 +1,7 @@
 package tracer.coverage.junit;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -29,6 +30,7 @@ import org.junit.runners.model.InitializationError;
 import tracer.coverage.core.ECGCoverageListener;
 import tracer.coverage.core.Listener;
 import tracer.coverage.core.Properties;
+import tracer.faulttracer.utils.FaultTracerProperties;
 
 public class JUnit4TestDriver {
 
@@ -116,8 +118,11 @@ public class JUnit4TestDriver {
 		testsStart();
 		int passed = 0, failed = 0, error = 0;
 		// System.out.println("************************************************************");
+		int test_id = 1;
+		Map<Integer, String> test_mapping = new HashMap<Integer, String>();
 		for (String testName : allTests) {
 			pass = true;
+			test_mapping.put(test_id, testName);
 			TestRunListener listener = new TestRunListener();
 
 			testStart(testName);
@@ -128,7 +133,8 @@ public class JUnit4TestDriver {
 			long timecost = end - start;
 			pass = listener.getErrors().size() == 0
 					&& listener.getFailures().size() == 0;
-			testEnd(testName);
+			testEnd(testName, test_id);
+			test_id++;
 			if (listener.getErrors().size() != 0)
 				error++;
 			if (listener.getFailures().size() != 0)
@@ -155,6 +161,19 @@ public class JUnit4TestDriver {
 		System.out
 				.println("************************************************************");
 		testsEnd();
+		writer.flush();
+		writer.close();
+		serializeTestId(test_mapping);
+	}
+
+	public static void serializeTestId(Map<Integer, String> test_mapping)
+			throws IOException {
+		BufferedWriter writer = new BufferedWriter(new FileWriter(
+				Properties.TRACER_COV_DIR + File.separator
+						+ Properties.TEST_ID_FILE));
+		for (int id : test_mapping.keySet()) {
+			writer.write(id + " " + test_mapping.get(id) + "\n");
+		}
 		writer.flush();
 		writer.close();
 	}
@@ -192,9 +211,9 @@ public class JUnit4TestDriver {
 	 * @param testName
 	 *            the test that starts
 	 */
-	private void testEnd(String testName) {
+	private void testEnd(String testName, int test_id) {
 		for (Listener listener : listeners) {
-			listener.testEnd(testName);
+			listener.testEnd(testName, test_id);
 		}
 	}
 

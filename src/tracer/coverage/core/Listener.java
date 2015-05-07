@@ -7,5 +7,5 @@ public interface Listener {
 
 	public void testStart(String testName);
 
-	public void testEnd(String testName);
+	public void testEnd(String testName, int test_id);
 }

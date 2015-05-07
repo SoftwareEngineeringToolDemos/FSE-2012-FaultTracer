@@ -9,7 +9,7 @@ import tracer.coverage.core.Properties;
 public class ECGTraceLoader {
 	
 	public static void main(String[] args) throws IOException{
-		Map<String, Map<String, Integer>> trace=TracerUtils.loadMethodTracesFromDirectory(Properties.TRACER_ECG_FILES);
+		Map<String, Map<String, Integer>> trace=TracerUtils.loadMethodTracesFromDirectory(Properties.TRACER_COV_DIR);
 		for(String test:trace.keySet()){
 			System.out.println("<Test>"+test);
 			for(String elem:trace.get(test).keySet()){

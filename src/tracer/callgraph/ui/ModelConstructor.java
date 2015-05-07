@@ -1,5 +1,6 @@
 package tracer.callgraph.ui;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,7 +28,12 @@ public class ModelConstructor {
 		nodeNaming = new HashMap<String, GraphNode>();
 		edgeNaming = new HashMap<String, GraphEdge>();
 		
-		ConstructUtils.initialize(chosenTest, before);
+		try {
+			ConstructUtils.initialize(chosenTest, before);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		for (String content : ConstructUtils.call_relation) {
 			String callerName = getCaller(content);
 			if (callerName.contains("StartFakeCaller"))

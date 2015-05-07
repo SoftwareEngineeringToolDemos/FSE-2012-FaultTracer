@@ -46,17 +46,18 @@ public class Properties {
 	public static boolean INSTRUMENT_FIELD = true;
 	public static boolean TRACE_CALL_REL = true;
 	public static final String TRACER_CLASS_NAME = "tracer/coverage/io/Tracer";
-	public static String TRACER_ECG_FILES = FaultTracerProperties.TRACER_DIR
+	public static String TRACER_COV_DIR = FaultTracerProperties.TRACER_DIR
 			+ File.separator + "ecg-coverage";
+	public static String TEST_ID_FILE="test_id.dat";
 	static {
 		if (Properties.METHOD_COV)
-			TRACER_ECG_FILES = FaultTracerProperties.TRACER_DIR
+			TRACER_COV_DIR = FaultTracerProperties.TRACER_DIR
 					+ File.separator + "method-coverage";
 		else if (Properties.STATEMENT_COV)
-			TRACER_ECG_FILES = FaultTracerProperties.TRACER_DIR
+			TRACER_COV_DIR = FaultTracerProperties.TRACER_DIR
 					+ File.separator + "statement-coverage";
 		else if (Properties.BRANCH_COV)
-			TRACER_ECG_FILES = FaultTracerProperties.TRACER_DIR
+			TRACER_COV_DIR = FaultTracerProperties.TRACER_DIR
 					+ File.separator + "branch-coverage";
 	}
 	public static String TRACER_BRAN_FILES = FaultTracerProperties.TRACER_DIR

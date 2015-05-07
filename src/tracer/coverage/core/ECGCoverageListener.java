@@ -21,7 +21,7 @@ public class ECGCoverageListener implements Listener {
 	}
 
 	public ECGCoverageListener() {
-		File dir = new File(Properties.TRACER_ECG_FILES);
+		File dir = new File(Properties.TRACER_COV_DIR);
 		if (!dir.exists())
 			dir.mkdir();
 	}
@@ -58,13 +58,13 @@ public class ECGCoverageListener implements Listener {
 	 * process after the execution of each test
 	 * 
 	 */
-	public void testEnd(String testName) {
+	public void testEnd(String testName, int test_id) {
 		Tracer.getInstance().deactivateTrace();
 
 		ConcurrentMap<String, Integer> methodMap = methodCoverageMap.get();
 		methodCoverageMap.set(new ConcurrentHashMap<String, Integer>());
 		TracerUtils.writeMethodTrace(methodMap, testName,
-				getMethodCoverageFileName(testName));
+				getMethodCoverageFileName("test-"+test_id));
 		methodCoverageMap.get().clear();
 
 		Tracer.getInstance().activateTrace();
@@ -78,7 +78,7 @@ public class ECGCoverageListener implements Listener {
 
 	static String getMethodCoverageFileName(String testName) {
 		String sanitizedName = sanitize(testName);
-		String fileName = Properties.TRACER_ECG_FILES + "/" + sanitizedName
+		String fileName = Properties.TRACER_COV_DIR + File.separator + sanitizedName
 				+ ".gz";
 		return fileName;
 	}

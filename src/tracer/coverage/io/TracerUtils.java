@@ -1,10 +1,12 @@
 package tracer.coverage.io;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -68,8 +70,9 @@ public class TracerUtils {
 		}
 	}
 
-	public static Map<String, Map<String, Integer>> loadMethodTracesFromDirectory() {
-		File dir = new File(Properties.TRACER_ECG_FILES);
+	public static Map<String, Map<String, Integer>> loadMethodTracesFromDirectory()
+			throws IOException {
+		File dir = new File(Properties.TRACER_COV_DIR);
 		logger.debug("Loading from " + dir);
 		if (!dir.exists()) {
 			logger.warn("No files for ECG coverage. Directory does not exist: "
@@ -82,16 +85,17 @@ public class TracerUtils {
 			}
 		});
 		Map<String, Map<String, Integer>> result = new HashMap<String, Map<String, Integer>>();
+		Map<String, String> id_test = loadTestMapping(Properties.TRACER_COV_DIR);
 		for (File f : tests) {
 			Map<String, Integer> classMap = loadMethodTrace(f);
 			String key = stripGz(f.getName());
-			result.put(key + "-" + testResult, classMap);
+			result.put(id_test.get(key) + "-" + testResult, classMap);
 		}
 		return result;
 	}
 
 	public static Map<String, Map<String, Integer>> loadMethodTracesFromDirectory(
-			String dirPath) {
+			String dirPath) throws IOException {
 		File dir = new File(dirPath);
 		logger.debug("Loading from " + dir);
 		if (!dir.exists()) {
@@ -105,18 +109,21 @@ public class TracerUtils {
 			}
 		});
 		Map<String, Map<String, Integer>> result = new HashMap<String, Map<String, Integer>>();
+		Map<String, String> id_test = loadTestMapping(dirPath);
+
 		for (File f : tests) {
 			Map<String, Integer> classMap = loadMethodTrace(f);
 			String key = stripGz(f.getName());
-			result.put(key + "-" + testResult, classMap);
+			result.put(id_test.get(key) + "-" + testResult, classMap);
 		}
 		return result;
 	}
 
-	public static Map<String, Map<String, Integer>> loadMethodTracesFromDirectoryForNewVersion() {
+	public static Map<String, Map<String, Integer>> loadMethodTracesFromDirectoryForNewVersion()
+			throws IOException {
 		File dir = new File(GlobalData.workspace_path + File.separator
 				+ GlobalData.proj2.getElementName() + File.separator
-				+ Properties.TRACER_ECG_FILES);
+				+ Properties.TRACER_COV_DIR);
 		logger.debug("Loading from " + dir);
 		if (!dir.exists()) {
 			logger.warn("No files for ECG coverage. Directory does not exist: "
@@ -129,18 +136,22 @@ public class TracerUtils {
 			}
 		});
 		Map<String, Map<String, Integer>> result = new HashMap<String, Map<String, Integer>>();
+		Map<String, String> id_test = loadTestMapping(GlobalData.workspace_path
+				+ File.separator + GlobalData.proj2.getElementName()
+				+ File.separator + Properties.TRACER_COV_DIR);
+
 		for (File f : tests) {
 			Map<String, Integer> classMap = loadMethodTrace(f);
 			String key = stripGz(f.getName());
-			result.put(key + "-" + testResult, classMap);
+			result.put(id_test.get(key) + "-" + testResult, classMap);
 		}
 		return result;
 	}
 
-	public static Map<String, Map<String, Integer>> loadMethodTracesFromDirectoryForOldVersion() {
+	public static Map<String, Map<String, Integer>> loadMethodTracesFromDirectoryForOldVersion()  {
 		File dir = new File(GlobalData.workspace_path + File.separator
 				+ GlobalData.proj1.getElementName() + File.separator
-				+ Properties.TRACER_ECG_FILES);
+				+ Properties.TRACER_COV_DIR);
 		logger.debug("Loading from " + dir);
 		if (!dir.exists()) {
 			logger.warn("No files for ECG coverage. Directory does not exist: "
@@ -153,12 +164,35 @@ public class TracerUtils {
 			}
 		});
 		Map<String, Map<String, Integer>> result = new HashMap<String, Map<String, Integer>>();
+		Map<String, String> id_test=null;
+		try {
+			id_test = loadTestMapping(GlobalData.workspace_path + File.separator
+					+ GlobalData.proj1.getElementName() + File.separator
+					+ Properties.TRACER_COV_DIR);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		for (File f : tests) {
 			Map<String, Integer> classMap = loadMethodTrace(f);
 			String key = stripGz(f.getName());
-			result.put(key + "-" + testResult, classMap);
+			result.put(id_test.get(key) + "-" + testResult, classMap);
 		}
 		return result;
+	}
+
+	public static Map<String, String> loadTestMapping(String dirPath)
+			throws IOException {
+		Map<String, String> map = new HashMap<String, String>();
+		BufferedReader reader = new BufferedReader(new FileReader(dirPath
+				+ File.separator + Properties.TEST_ID_FILE));
+		String line = reader.readLine();
+		while (line != null) {
+			String[] items = line.split(" ");
+			map.put(items[0], items[1]);
+			line = reader.readLine();
+		}
+		return map;
 	}
 
 	public static Map<String, Integer> loadMethodTrace(File file) {
@@ -189,6 +223,7 @@ public class TracerUtils {
 		if (test.endsWith(".gz")) {
 			key = test.substring(0, test.length() - 3);
 		}
+		key = key.replace("test-", "");
 		return key;
 	}
 
