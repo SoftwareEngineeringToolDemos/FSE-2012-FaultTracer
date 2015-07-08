@@ -24,5 +24,4 @@ public class CoverageSerializer {
 		writer.flush();
 		writer.close();
 	}
-
 }
