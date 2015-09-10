@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: FIFL
-Bundle-SymbolicName: FaultTracer-OOPSLA;singleton:=true
+Bundle-Name: FaultTracer
+Bundle-SymbolicName: FaultTracer;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: tracer.Activator
 Require-Bundle: org.eclipse.ui,

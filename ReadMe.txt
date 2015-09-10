@@ -1,3 +1,6 @@
+FaultTracer is a tool set that can help with various software testing tasks, including
+regression test selection, fault localization, coverage collection and so on.
+
 >>>>>>>>>>>>>>>>>Installation>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 Import the FaultTracer project into Eclipse to compile it. You need to
@@ -23,8 +26,8 @@ directory of each program version under test:
   <import file="${faulttracer}\resources\faulttracer.xml"/>
 </project>
 
-To illustrate, see the fault-config.xml and fault-config-junit3.xml
-for a small example project under the examples/bank-account1.0
+To illustrate, see the fault-config-junit4.xml and fault-config-junit3.xml
+for a small example project under the examples/bank-account1.0 (and 2.0)
 directory.
 
 In the config file:
@@ -49,11 +52,11 @@ exclude them -- you can run that test suite from Eclipse first to
 exclude all the non-test classes from the test suite. 
 
 4. "junit4" shows whether the test suite is under JUnit4.0+ (for JUnit3
-put the value to be "false")
+put the value to be "false");
 
 5. "newversion" shows the absolute path of the newer version compared
-with the current version (do not use it if you are not using the test
-selection functionality);
+with the current version (used when you are using the test selection
+functionality);
 
 6. "faulttracer" provides the absolute path of the FaultTracer project;
 
@@ -67,13 +70,92 @@ directory for your source code and test code.
 FaultTracer (for the concern of performance, we suggest a value of
 greater than or equal to "1024m").
 
+>>>>>>>>>>>>>>>>Regression Test Selection>>>>>>>>>>>>>>>>>>>>>
+
+1. Extract Program Edits
+
+FaultTracer automatically extracts atomic changes between the version
+pair after the user right-clicks the two versions under test and
+select "Launch FaultTracer".
+
+Then the user can also see the visualized atomic changes in the
+Atomic-Change View. All the FaultTracer views can be found in the
+following Eclipse path: "Window"->"Show View"->"Other"->"FaultTracer".
+When the user double click a specific change node, FaultTracer would
+show change details in the Java Editor.
+
+2. Collect ECGs
+
+The collection of ECGs has been implemented as an Ant task, the user
+can easily collect ECG coverage of program under test using the
+following command-line script:
+
+cd path-of-program-to-trace
+ant -f config.xml collectECGCoverage
+
+which navigates to the base directory of the program under test, and
+then runs the Ant task collectECGCoverage. Then FaultTracer would
+automatically run the test suite for the program and record its ECG
+coverage for each test. The user can choose to see the visualized ECG
+coverage for each test in the Extended-Call-Graph View. 
+
+3. Select Affected Tests
+
+The selection of affected tests has also been implemented as an Ant
+task, the user can easily perform affected test selection using the
+following command-line script:
+
+cd path-of-old-version
+ant -f config.xml selectAffectedTests
+
+which will select affected tests and store affected test handles in
+the new program version's FaultTracer files. Then the user can easily
+only run affected tests on the new version by simply using the
+following script:
+
+cd path-of-new-version
+ant -f config.xml runAffectedTests
+
+4. Determine Affecting Changes
+
+The user can perform affecting change determination by the following script:
+
+cd path-of-new-version
+ant -f config.xml determineAffectingChanges
+
+After the affecting change determination, the user can view the
+affecting changes for each affected tests in the Testing-Debugging
+View. The left table in the view lists all the
+affected tests. When the user double-clicks an affected test in the
+left table, the view would display all the affecting changes for the
+test in the right table. Note that for this step, the view would not
+rank affecting changes. Also, the suspicious values and heuristic
+values for each affecting change would all be 0.  
+
+5. Rank Affecting Changes
+
+The user can perform affecting change ranking by the following script:
+
+cd path-of-new-version
+ant -f config.xml rankAffectingChanges
+
+After the affecting change ranking, the user can view the ranked
+affecting changes for each affected tests in the Testing-Debugging
+View. Note that for this step, the view would rank affecting changes
+and display the suspicious values and heuristic values for each
+affecting change.
 
 >>>>>>>>>>>>>>>>>Collect Coverage>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+This section presents examples on how to collect various code coverage
+for the project under test.
+
+1. Collect Coverage
 
 Go to the examples/bank-acount1.0 directory, compile the project to
 generate class files in "bin/" dir (e.g., using eclipse). Then execute:
 
-$ ant -f faulttracer-config.xml collectMethodCoverage
+$ ant -f faulttracer-config-junit4.xml collectMethodCoverage
 
 to collect the method coverage for the JUnit4 test suite: edu.ut.ece.bank.tests.JUnit4Driver
 
@@ -88,20 +170,20 @@ Note that by replacing "collectMethodCoverage" with
 statement or branch coverage. All the coverage results are stored in
 the "faulttracer-files" dir created under your project.
 
->>>>>>>>>>>>>>>>>Load Coverage>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2. Load Collected Coverage
 
 After you collect the coverage for your project, e.g.,
 examples/bank-acount1.0, stay in the same dir. Then execute:
 
-$ ant -f faulttracer-config.xml loadMethodCoverage
+$ ant -f faulttracer-config-junit4.xml loadMethodCoverage
 
 to load your method coverage. Or
 
-$ ant -f faulttracer-config.xml loadStatementCoverage
+$ ant -f faulttracer-config-junit4.xml loadStatementCoverage
 
 to load your statement coverage. Or
 
-$ ant -f faulttracer-config.xml loadBranchCoverage
+$ ant -f faulttracer-config-junit4.xml loadBranchCoverage
 
 to load your branch coverage.
 

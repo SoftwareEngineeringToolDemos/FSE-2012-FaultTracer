@@ -1,16 +1,17 @@
 package edu.ut.ece.bank;
 
-//import junit.framework.TestCase;
-
-
 /*
  * Store standard account information
  */
 public class Account extends BankInfo {
 	public String account;
 	public double checking = 100;
-	public double yRate = 0.01;
-	public double cRate = 0.001;
+	// added field
+	public double saving = 100;
+	// changed field
+	public double yRate = 0.02; 
+	// deleted field
+	//public double cRate = 0.001; 
 
 	public Account(String a) {
 		account = a;
@@ -21,13 +22,17 @@ public class Account extends BankInfo {
 		return checking;
 	}
 
-	// withdraw from the account
-	public double withdraw(double v) {
-		if (checking >= v) {
-			checking = checking - v;
+	// changed method: withdraw from the account
+	public double withdraw(double v) { 
+		if(checking>=v) {
+			checking=checking-v;
 			return v;
-		} else
-			return 0;
+			}
+			else if(saving>=v) {
+			saving=saving-v;
+			return v;
+			}
+			else return 0;
 	}
 
 	// deposit to the account
@@ -35,9 +40,9 @@ public class Account extends BankInfo {
 		checking = checking + v;
 	}
 
+	//deleted method
 	// get interest rate
-	double getRate() {
-//TestCase.assertEquals(false, false);
-		return cRate;
-	}
+	//double getRate() { 
+	//	return cRate;
+	//}
 }

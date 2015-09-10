@@ -1,8 +1,8 @@
 <project name="FaultTracer-specific">
-	<property name="subject" value="bank-account1.0"/>
+	<property name="subject" value="bank-account2.0"/>
 	<property name="prefix" value="edu.ut.ece.bank"/>
 	<property name="testsuite" value="edu.ut.ece.bank.tests.junit3.TestDriver"/>
-	<property name="newversion" value="/Users/zhanglingming/Documents/runtime-EclipseApplication/bank-account2.0"/>
+	<property name="newversion" value="/Users/zhanglingming/Documents/runtime-EclipseApplication/bank-account3.0"/>
 	<property name="junit4" value="false"/>
 	<property name="faulttracer" value="/Users/zhanglingming/Documents/workspace/FaultTracer"/>
 	<property name="cp" value="./bin:./lib/*"/>

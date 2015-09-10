@@ -11,7 +11,7 @@
                class="tracer.ui.DifferencingPopupAction"
                icon="icons/change.gif"
                id="FaultTracer.action1"
-               label="Launch FIFL"
+               label="Launch FaultTracer"
                menubarPath="FaultTracer">
          </action>
       </objectContribution>
