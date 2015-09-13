@@ -1,4 +1,4 @@
-package edu.ut.ece.bank.tests;
+package edu.ut.ece.bank.tests.junit3;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -11,4 +11,4 @@ public class TestDriver extends TestCase {
 		suite.addTestSuite(BankTests.class);
 		return suite;
 	}
-} 
+}

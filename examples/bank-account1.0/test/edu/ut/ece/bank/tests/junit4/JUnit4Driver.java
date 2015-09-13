@@ -1,4 +1,4 @@
-package edu.ut.ece.bank.tests;
+package edu.ut.ece.bank.tests.junit4;
 
 import junit.framework.JUnit4TestAdapter;
 import junit.framework.Test;
@@ -10,5 +10,5 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({ JUnit4Tests.class })
-public class JUnit4Driver extends TestCase {
+public class JUnit4Driver {
 }
