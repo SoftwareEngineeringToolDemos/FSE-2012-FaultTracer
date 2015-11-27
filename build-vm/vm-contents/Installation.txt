@@ -1,0 +1,67 @@
+FaultTracer Installation Manual
+
+System Requirements
+===================
+1. JDK 1.7
+2. Eclipse IDE 3.6.0 and above
+3. Eclipse GEF Zest Visualization toolkit 1.3.0 and above
+4. Ant 1.7.0 and above
+
+Create Binary From source Code
+==============================
+If the binary is not available (its' there on the desktop) then you can build it from source code.
+Import the FaultTracer project as an eclipse project and build it.
+From the menu option, Go to File->Export->Plug-in development->"Deployable plug-ins and fragments" and click next. Enter the destination path and click on finish. Now copy the jar file created to the dropins directory of your eclipse installation. Now restart the eclipse from terminal with "-clean" paramenter. 
+
+Run the Tool
+============
+[Step 1] Launching the FaultTracer
+
+Import the test projects to eclipse. Make sure that the perspective is set to Java.
+FaultTracer automatically extracts atomic changes between the version pair after the user right-clicks the two versions and select "Launch FaultTracer" option.
+
+[Step 2] Extract Program Edits
+
+The user can also view the atomic changes in the "Atomic-Change View". To open the "Atomic-Change View" select Winodws->Show View->FaultTracer and select the "Atomic-Change View".
+In the atomic change view user can searcch for specific graph node, apply and unapply specific changes.
+
+[Step 3] Collect ECG
+
+The collection of ECG has been implementedas an Ant Task, the user can easily collect ECG coverage of program under test using the following commands:
+	cd path-of-old-program-to-trace
+	ant -f config.xml collectECGCoverage
+which navigates to the base directory of the program under test, and then runs the Ant task collectECGCoverage. 
+
+Then FaultTracer would automatically run the test suite for the program and record its ECG coverage for each test. The user can choose to see the visualized ECG coverage for each test in the Extended-Call-Graph View. To open the "Extended-Call-Graph View" select Winodws->Show View->FaultTracer and select the "Extended-Call-Graph View". When the user click a node, FaultTracer would automatically highlight all the methods and fields transitively invoked or accessed by the node. The user can specify any test to display by clicking the "Choose Test" menu. The user can also specify to show the ECG on the old/new version of the chosen test via clicking "Old ECG"/"New ECG".
+
+[Step 4] select Affected Tests
+
+The selection of affected tests has also been implemented as an Ant task, the user can easily perform affected test selection using the following commands:
+	cd path-of-old-version
+	ant -f config.xml selectAffectedTests
+which will select affected tests and store affected test handles in the new program version's FaultTracer files. 
+
+Then the user can easily only run affected tests on the new version by simply using the following commands:
+	cd path-of-new-version
+	ant -f config.xml runAffectedTests
+
+[Step 5] Determine Affecting Changes
+
+The user can perform affecting change determination by the following commands:
+	cd path-of-new-version
+	ant -f config.xml determineAffectingChanges
+
+After the affecting change determination, the user can view the affecting changes for each affected tests in the Testing-Debugging View. To open the "Testing-Debugging View" select Winodws->Show View->FaultTracer and select the "Testing-Debugging View". The left table in the view lists all the affected tests. When the user double-clicks an affected test in the left table, the view would display all the affecting changes for the test in the right table. Note that for this step, the view would not rank affecting changes. Also, the suspicious values and heuristic values for each affecting change would all be 0.
+
+[Step 6] Rank Affecting Changes
+
+The user can perform affecting change ranking by the following commands:
+	cd path-of-new-version
+	ant -f config.xml rankAffectingChanges
+
+After the affecting change ranking, the user can view the ranked affecting changes for each affected tests in the Testing-Debugging View. Note that for this step, the view would rank affecting changes and display the suspicious values and heuristic values for each affecting change.
+
+References
+==========
+For more information of how to install/run the tool, please refer the installation manual from the author itself:
+	http://www.utdallas.edu/~lxz144130/ftracer.html
