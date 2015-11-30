@@ -3,7 +3,6 @@ This repository contains information related to the tool FaultTracer: A change i
 
 This repository _is not_ the original repository for this tool. Here are some links to the original project:
 * [The Official Project Page, including source code](http://www.utdallas.edu/~lxz144130/ftracer.html)
-* [A Video of the Tool](https://www.youtube.com/watch?v=rKhUdm1Dhu0)
 * [Original Download Link](https://bitbucket.org/zhanglm10/faulttracer/)
 
 In this repository, for FaultTracer you will find:
